@@ -1,6 +1,4 @@
-#!/bin/sh
-'''exec' "/home/pradeep/Desktop/ml project/venv/bin/python3" "$0" "$@"
-' '''
+#!/home/pradeep/Desktop/Pradeep_205124066_B/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
