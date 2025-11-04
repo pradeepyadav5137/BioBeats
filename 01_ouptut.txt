@@ -1,0 +1,215 @@
+
+
+
+
+
+
+Hosted On streamlit :- 
+
+
+
+
+
+
+
+venv) pradeep@pradeep-Latitude-7490:~/Desktop/ml project$ python3 app1.py
+============================================================
+LOADING DATASET
+============================================================
+
+Dataset Shape: (62317, 22)
+
+First few rows:
+                 track_id                                  track_name  ...                                          track_url  language
+0  2r0ROhr7pRN4MXDMT1fEmd                  Leo Das Entry (From "Leo")  ...  https://open.spotify.com/track/2r0ROhr7pRN4MXD...     Tamil
+1  4I38e6Dg52a2o2a8i5Q5PW                                AAO KILLELLE  ...  https://open.spotify.com/track/4I38e6Dg52a2o2a...     Tamil
+2  59NoiRhnom3lTeRFaBzOev      Mayakiriye Sirikiriye - Orchestral EDM  ...  https://open.spotify.com/track/59NoiRhnom3lTeR...     Tamil
+3  5uUqRQd385pvLxC8JX3tXn    Scene Ah Scene Ah - Experimental EDM Mix  ...  https://open.spotify.com/track/5uUqRQd385pvLxC...     Tamil
+4  1KaBRg2xgNeCljmyxBH1mo  Gundellonaa X I Am A Disco Dancer - Mashup  ...  https://open.spotify.com/track/1KaBRg2xgNeCljm...     Tamil
+
+[5 rows x 22 columns]
+
+Column Names:
+['track_id', 'track_name', 'artist_name', 'year', 'popularity', 'artwork_url', 'album_name', 'acousticness', 'danceability', 'duration_ms', 'energy', 'instrumentalness', 'key', 'liveness', 'loudness', 'mode', 'speechiness', 'tempo', 'time_signature', 'valence', 'track_url', 'language']
+
+Data Info:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 62317 entries, 0 to 62316
+Data columns (total 22 columns):
+ #   Column            Non-Null Count  Dtype  
+---  ------            --------------  -----  
+ 0   track_id          62317 non-null  object 
+ 1   track_name        62317 non-null  object 
+ 2   artist_name       62317 non-null  object 
+ 3   year              62317 non-null  int64  
+ 4   popularity        62317 non-null  int64  
+ 5   artwork_url       62317 non-null  object 
+ 6   album_name        62317 non-null  object 
+ 7   acousticness      62317 non-null  float64
+ 8   danceability      62317 non-null  float64
+ 9   duration_ms       62317 non-null  float64
+ 10  energy            62317 non-null  float64
+ 11  instrumentalness  62317 non-null  float64
+ 12  key               62317 non-null  float64
+ 13  liveness          62317 non-null  float64
+ 14  loudness          62317 non-null  float64
+ 15  mode              62317 non-null  float64
+ 16  speechiness       62317 non-null  float64
+ 17  tempo             62317 non-null  float64
+ 18  time_signature    62317 non-null  float64
+ 19  valence           62317 non-null  float64
+ 20  track_url         62317 non-null  object 
+ 21  language          62317 non-null  object 
+dtypes: float64(13), int64(2), object(7)
+memory usage: 10.5+ MB
+None
+
+============================================================
+DATA PREPROCESSING
+============================================================
+
+Missing Values:
+track_id            0
+track_name          0
+artist_name         0
+year                0
+popularity          0
+artwork_url         0
+album_name          0
+acousticness        0
+danceability        0
+duration_ms         0
+energy              0
+instrumentalness    0
+key                 0
+liveness            0
+loudness            0
+mode                0
+speechiness         0
+tempo               0
+time_signature      0
+valence             0
+track_url           0
+language            0
+dtype: int64
+
+Audio Features Selected: 15 features
+['acousticness', 'danceability', 'duration_ms', 'energy', 'instrumentalness', 'liveness', 'loudness', 'speechiness', 'tempo', 'valence', 'key', 'mode', 'time_signature', 'popularity', 'year']
+
+Basic Statistics of Audio Features:
+       acousticness  danceability   duration_ms        energy  instrumentalness  ...           key          mode  time_signature    popularity          year
+count  62317.000000  62317.000000  6.231700e+04  62317.000000      62317.000000  ...  62317.000000  62317.000000    62317.000000  62317.000000  62317.000000
+mean       0.362292      0.596807  2.425270e+05      0.602496          0.146215  ...      5.101658      0.586052        3.857086     15.358361   2014.425935
+std        0.314609      0.186209  1.129999e+05      0.246144          0.307804  ...      3.553469      0.493682        0.502660     18.626908      9.645113
+min       -1.000000     -1.000000  5.000000e+03     -1.000000         -1.000000  ...     -1.000000     -1.000000       -1.000000      0.000000   1971.000000
+25%        0.067100      0.497000  1.921600e+05      0.440000          0.000000  ...      2.000000      0.000000        4.000000      0.000000   2011.000000
+50%        0.286000      0.631000  2.362670e+05      0.639000          0.000025  ...      5.000000      1.000000        4.000000      7.000000   2017.000000
+75%        0.632000      0.730000  2.862400e+05      0.803000          0.015200  ...      8.000000      1.000000        4.000000     26.000000   2022.000000
+max        0.996000      0.986000  4.581483e+06      1.000000          0.999000  ...     11.000000      1.000000        5.000000     93.000000   2024.000000
+
+[8 rows x 15 columns]
+
+============================================================
+FEATURE SCALING
+============================================================
+Features scaled using StandardScaler
+Scaled data shape: (62317, 15)
+Scaler saved as 'scaler.pkl'
+
+============================================================
+DIMENSIONALITY REDUCTION (PCA)
+============================================================
+Original number of features: 15
+Reduced number of features: 13
+Explained variance ratio: [0.19801652 0.09387722 0.08829339 0.07734895 0.07132942 0.06933649
+ 0.06501165 0.06365938 0.05776888 0.05614297 0.04515392 0.04507962
+ 0.02868828]
+Total variance explained: 0.9597
+PCA visualization saved as 'pca_analysis.png'
+PCA model saved as 'pca.pkl'
+
+============================================================
+MODEL 1: K-MEANS CLUSTERING
+============================================================
+
+Finding optimal number of clusters...
+K=5: Inertia=610961.67, Silhouette=0.1044
+K=6: Inertia=576733.53, Silhouette=0.1152
+K=7: Inertia=543291.83, Silhouette=0.1240
+K=8: Inertia=509066.21, Silhouette=0.1338
+K=9: Inertia=485723.08, Silhouette=0.1286
+K=10: Inertia=462896.18, Silhouette=0.1360
+K=11: Inertia=450090.82, Silhouette=0.1315
+K=12: Inertia=435974.06, Silhouette=0.1284
+K=13: Inertia=421612.28, Silhouette=0.1246
+K=14: Inertia=408532.63, Silhouette=0.1262
+K=15: Inertia=398524.29, Silhouette=0.1222
+K=16: Inertia=390489.47, Silhouette=0.1238
+K=17: Inertia=385607.78, Silhouette=0.1172
+K=18: Inertia=377785.05, Silhouette=0.1211
+K=19: Inertia=371662.52, Silhouette=0.1216
+K=20: Inertia=367406.38, Silhouette=0.1199
+K-Means optimization plot saved as 'kmeans_optimization.png'
+
+K-Means Model (K=10) Performance:
+Silhouette Score: 0.1360 (Higher is better, range: -1 to 1)
+Davies-Bouldin Index: 1.5311 (Lower is better)
+Calinski-Harabasz Score: 6493.75 (Higher is better)
+K-Means model saved as 'kmeans_model.pkl'
+
+============================================================
+MODEL 2: DBSCAN CLUSTERING
+============================================================
+
+DBSCAN Results:
+Number of clusters: 7
+Number of noise points: 351
+
+DBSCAN Performance:
+Silhouette Score: 0.3479 (Higher is better)
+Davies-Bouldin Index: 0.6800 (Lower is better)
+Calinski-Harabasz Score: 1516.59 (Higher is better)
+DBSCAN model saved as 'dbscan_model.pkl'
+
+============================================================
+MODEL 3: HIERARCHICAL CLUSTERING
+============================================================
+Dataset has 62317 samples. Sampling 10000 for Hierarchical clustering to prevent memory issues...
+Note: Trained on 10000 samples, extended to full dataset using KNN
+
+Hierarchical Clustering (n_clusters=10) Performance:
+Silhouette Score: 0.0941 (Higher is better)
+Davies-Bouldin Index: 1.7351 (Lower is better)
+Calinski-Harabasz Score: 868.05 (Higher is better)
+Hierarchical clustering labels saved as 'hierarchical_model.pkl'
+
+============================================================
+MODEL COMPARISON
+============================================================
+
+        Model  Silhouette Score  Davies-Bouldin Index  Calinski-Harabasz Score
+     K-Means          0.135970              1.531083              6493.747430
+      DBSCAN          0.347879              0.679972              1516.589943
+Hierarchical          0.094076              1.735106               868.052990
+
+Model comparison plot saved as 'model_comparison.png'
+
+============================================================
+SAVING PROCESSED DATA
+============================================================
+Processed data with cluster labels saved as 'processed_music_data.csv'
+PCA-transformed features saved as 'X_pca.npy'
+
+============================================================
+TRAINING COMPLETE!
+============================================================
+
+Files created:
+1. scaler.pkl - Feature scaler
+2. pca.pkl - PCA model
+3. kmeans_model.pkl - K-Means clustering model
+4. dbscan_model.pkl - DBSCAN clustering model
+5. hierarchical_model.pkl - Hierarchical clustering model
+6. processed_music_data.csv - Dataset with cluster labels
+7. X_pca.npy - PCA-transformed features
+8. Various .png visualization files

@@ -1,0 +1,7 @@
+step 1 :- Open Folder in VS Code or Code editor or open terminal in same Folder
+
+step 2 :- Run streamlit file 
+                    streamlit run 03_streamlit.py
+
+                    it will give you a localhost browser open it and use it
+                    
